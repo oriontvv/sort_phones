@@ -15,7 +15,7 @@ $./venv/bin/python -m pip install -r requirements.txt
 
 ### gen some file with pseudo-random phones for test
 ##### WARNING: The file requires 13G on disk.
-For simplicity, lets just write phone numbers in the reverse order, it will not affect the solution
+For simplicity, lets just write phone numbers in the reverse order, it will not affect the solution.
 I tried to generate a file with C++, Python and Rust just for fun.
 Implementation in Rust happens to be the fastest, it looks like it can handle buffering better.
 (I put the amd64 compiled linux binary to this repo to rs/rs)
@@ -23,8 +23,8 @@ Implementation in Rust happens to be the fastest, it looks like it can handle bu
 ```bash
 $ gcc gen.cpp -lstdc++ -o gen
 $ time ./gen /media/data/temp/phones.txt
-./gen /media/data/temp/phones.txt  150.08s user 586.12s system 99% cpu 12:18.35 total
-# -O2 and -O3 doens't give any boost
+./gen /media/data/temp/c_phones.txt  61.64s user 6.31s system 69% cpu 1:37.94 total
+# -O2 and -O3 doens't give any noticeable boost
 #---------------------------------------------------------------------
 $ time venv/bin/python gen.py --path /media/data/temp/phones.txt
 venv/bin/python gen.py --path /media/data/temp/phones.txt  260.93s user 7.53s system 98% cpu 4:33.11 total
@@ -34,11 +34,11 @@ cargo run --release -- /media/data/temp/phones.txt  34.42s user 5.81s system 38%
 ```
 
 # Sorting the file
-Because of huge amount of input data lets sort the file using [external sort algorithm](https://en.wikipedia.org/wiki/External_sorting)
-There is a nice [python implementation](https://github.com/dapper91/python-external-sort)
+Because of huge amount of input data lets sort the file using [external sort algorithm](https://en.wikipedia.org/wiki/External_sorting).
+There is a nice [python implementation](https://github.com/dapper91/python-external-sort).
 Note: Addition disk space is required for chunks(size of size can be specified)
 
-sort.py reads chunks from input_path/phones.txt using multiprocessing, sorts them and then merges using heap. Result is written into input_path/sorted.txt
+sort.py reads chunks from input_path/phones.txt using multiprocessing, sorts them and then merges using heap. Result is written into input_path/sorted.txt.
 script finished in 24.5 min
 
 ```bash
